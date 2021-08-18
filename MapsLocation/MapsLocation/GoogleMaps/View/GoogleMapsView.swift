@@ -5,12 +5,13 @@
 //  Created by Alexey on 18.08.2021.
 //
 
-import UIKit
+import SnapKit
+import GoogleMaps
 
 final class GoogleMapsView: UIView {
     // MARK: - Subviews
     
-    
+    lazy var mapView = GMSMapView()
     
     // MARK: - Init
     
@@ -33,6 +34,16 @@ final class GoogleMapsView: UIView {
     // MARK: - UI
     
     private func configureUI() {
-        self.backgroundColor = .gray
+        self.backgroundColor = .white
+        
+        setupMapView()
+    }
+    
+    private func setupMapView() {
+        addSubview(mapView)
+        
+        mapView.snp.makeConstraints { make in
+            make.left.right.top.bottom.equalTo(self)
+        }
     }
 }
