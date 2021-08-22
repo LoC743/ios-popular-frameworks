@@ -51,6 +51,7 @@ final class GoogleMapsView: UIView {
             mapView.mapStyle = try? GMSMapStyle(contentsOfFileURL: style)
         }
         
+        mapView.isMyLocationEnabled = true
     }
     
     public func moveToPosition(with coordinate: CLLocationCoordinate2D) {

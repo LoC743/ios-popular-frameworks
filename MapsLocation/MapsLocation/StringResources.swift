@@ -12,4 +12,7 @@ enum StringResources {
     
     static let styleFileName = "GMStyle"
     static let styleFileExtension = "json"
+    
+    static let startTrackTitle = "Start tracking"
+    static let endTrackTitle = "Stop tracking"
 }
