@@ -1,0 +1,24 @@
+PODS:
+  - GoogleMaps (5.1.0):
+    - GoogleMaps/Maps (= 5.1.0)
+  - GoogleMaps/Base (5.1.0)
+  - GoogleMaps/Maps (5.1.0):
+    - GoogleMaps/Base
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - GoogleMaps
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - GoogleMaps
+    - SnapKit
+
+SPEC CHECKSUMS:
+  GoogleMaps: 086ae1dab659eaa7339bdb30fc88e2f44e7c597c
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: 884279404bca8f956af2b51d63f149e79a7a4cb9
+
+COCOAPODS: 1.10.0
