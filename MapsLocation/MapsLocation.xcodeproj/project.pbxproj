@@ -17,6 +17,9 @@
 		8AEDB5D226CD666900EA26A1 /* StringResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDB5D126CD666900EA26A1 /* StringResources.swift */; };
 		8AEDB5D426CD6CB300EA26A1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDB5D326CD6CB300EA26A1 /* UIColor+Extension.swift */; };
 		8AEDB5D626CD6D0600EA26A1 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDB5D526CD6D0600EA26A1 /* CGFloat+Extension.swift */; };
+		8AF63E5726D3A4D700D2BB45 /* RouteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF63E5626D3A4D700D2BB45 /* RouteStorage.swift */; };
+		8AF63E5A26D3A62B00D2BB45 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF63E5926D3A62B00D2BB45 /* Location.swift */; };
+		8AF63E5C26D3B40500D2BB45 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF63E5B26D3B40500D2BB45 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		8AEDB5D126CD666900EA26A1 /* StringResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResources.swift; sourceTree = "<group>"; };
 		8AEDB5D326CD6CB300EA26A1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		8AEDB5D526CD6D0600EA26A1 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
+		8AF63E5626D3A4D700D2BB45 /* RouteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStorage.swift; sourceTree = "<group>"; };
+		8AF63E5926D3A62B00D2BB45 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		8AF63E5B26D3B40500D2BB45 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		DCA11AD585FD0AC7FEEA7E92 /* Pods-MapsLocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsLocation.release.xcconfig"; path = "Target Support Files/Pods-MapsLocation/Pods-MapsLocation.release.xcconfig"; sourceTree = "<group>"; };
 		E3D6FA37A1269D523F0BC2FC /* Pods_MapsLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapsLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9A64B99317AE32D0D165B4 /* Pods-MapsLocation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsLocation.debug.xcconfig"; path = "Target Support Files/Pods-MapsLocation/Pods-MapsLocation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,13 +75,13 @@
 		8ADF584B26CD595400AFBB24 /* MapsLocation */ = {
 			isa = PBXGroup;
 			children = (
+				8AF63E5826D3A62000D2BB45 /* Models */,
+				8AF63E5526D3A4BD00D2BB45 /* RouteStorage */,
+				8AF63E5426D3A4A400D2BB45 /* Extensions */,
 				8AEDB5CE26CD65B700EA26A1 /* Resources */,
 				8ADF586226CD5A3700AFBB24 /* GoogleMaps */,
 				8ADF584C26CD595400AFBB24 /* AppDelegate.swift */,
-				8AEDB5D126CD666900EA26A1 /* StringResources.swift */,
 				8ADF585A26CD595400AFBB24 /* Info.plist */,
-				8AEDB5D326CD6CB300EA26A1 /* UIColor+Extension.swift */,
-				8AEDB5D526CD6D0600EA26A1 /* CGFloat+Extension.swift */,
 			);
 			path = MapsLocation;
 			sourceTree = "<group>";
@@ -108,11 +114,38 @@
 		8AEDB5CE26CD65B700EA26A1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8AEDB5D126CD666900EA26A1 /* StringResources.swift */,
 				8ADF585726CD595400AFBB24 /* LaunchScreen.storyboard */,
 				8ADF585526CD595400AFBB24 /* Assets.xcassets */,
 				8AEDB5CF26CD65EE00EA26A1 /* GMStyle.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		8AF63E5426D3A4A400D2BB45 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8AEDB5D326CD6CB300EA26A1 /* UIColor+Extension.swift */,
+				8AEDB5D526CD6D0600EA26A1 /* CGFloat+Extension.swift */,
+				8AF63E5B26D3B40500D2BB45 /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8AF63E5526D3A4BD00D2BB45 /* RouteStorage */ = {
+			isa = PBXGroup;
+			children = (
+				8AF63E5626D3A4D700D2BB45 /* RouteStorage.swift */,
+			);
+			path = RouteStorage;
+			sourceTree = "<group>";
+		};
+		8AF63E5826D3A62000D2BB45 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8AF63E5926D3A62B00D2BB45 /* Location.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8D6D5AEBD150A3217267A4D8 /* Frameworks */ = {
@@ -266,8 +299,11 @@
 			files = (
 				8ADF586626CD5A6500AFBB24 /* GoogleMapsView.swift in Sources */,
 				8ADF586126CD59D400AFBB24 /* GoogleMapsViewController.swift in Sources */,
+				8AF63E5726D3A4D700D2BB45 /* RouteStorage.swift in Sources */,
 				8AEDB5D626CD6D0600EA26A1 /* CGFloat+Extension.swift in Sources */,
+				8AF63E5C26D3B40500D2BB45 /* UIViewController+Extensions.swift in Sources */,
 				8AEDB5D226CD666900EA26A1 /* StringResources.swift in Sources */,
+				8AF63E5A26D3A62B00D2BB45 /* Location.swift in Sources */,
 				8ADF584D26CD595400AFBB24 /* AppDelegate.swift in Sources */,
 				8AEDB5D426CD6CB300EA26A1 /* UIColor+Extension.swift in Sources */,
 			);

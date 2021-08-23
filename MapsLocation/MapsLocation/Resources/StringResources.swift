@@ -15,4 +15,11 @@ enum StringResources {
     
     static let startTrackTitle = "Start tracking"
     static let endTrackTitle = "Stop tracking"
+    
+    static let lastRouteTitle = "Show last route"
+    
+    static let showLastRouteAlertTitle = "Ooops!"
+    static let showLastRouteAlertMessage = "Do you want to stop tracking?"
+    static let yes = "Yes"
+    static let no = "No"
 }
