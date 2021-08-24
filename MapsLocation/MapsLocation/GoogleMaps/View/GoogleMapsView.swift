@@ -29,6 +29,9 @@ final class GoogleMapsView: UIView {
     
     enum Constants {
         static let safeArea = UIApplication.shared.windows[0].safeAreaInsets
+        static let navigationBarHeight: CGFloat = 44.0
+        
+        static let sideOffset: CGFloat = 35.0
     }
     
     // MARK: - UI
@@ -51,12 +54,24 @@ final class GoogleMapsView: UIView {
             mapView.mapStyle = try? GMSMapStyle(contentsOfFileURL: style)
         }
         
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
     }
     
-    public func moveToPosition(with coordinate: CLLocationCoordinate2D) {
+    public func moveToPosition(with coordinate: CLLocationCoordinate2D, animated: Bool) {
         let position = GMSCameraPosition(target: coordinate, zoom: 17)
         
-        mapView.animate(to: position)
+        if animated {
+            mapView.animate(to: position)
+        } else {
+            mapView.camera = position
+        }
+    }
+    
+    public func moveToUserPosition(animated: Bool) {
+        if let coordinate = mapView.myLocation?.coordinate {
+            moveToPosition(with: coordinate, animated: animated)
+        }
     }
     
     public func addMarker(at coordinate: CLLocationCoordinate2D) {
@@ -64,5 +79,16 @@ final class GoogleMapsView: UIView {
         marker.icon = GMSMarker.markerImage(with: .random()
         )
         marker.map = mapView
+    }
+    
+    public func showLastRoute(with bounds: GMSCoordinateBounds) {
+        let insets =  UIEdgeInsets(top: Constants.navigationBarHeight + Constants.sideOffset,
+                                   left: Constants.sideOffset,
+                                   bottom: Constants.sideOffset,
+                                   right: Constants.sideOffset
+        )
+        if let camera = mapView.camera(for: bounds, insets: insets) {
+            mapView.animate(to: camera)
+        }
     }
 }
