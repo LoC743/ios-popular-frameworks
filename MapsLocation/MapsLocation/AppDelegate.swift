@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(StringResources.apiKey)
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController(rootViewController: GoogleMapsViewController())
+        let navigationController = UINavigationController(rootViewController: GoogleMapsBuilder.build())
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window

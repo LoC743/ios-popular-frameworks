@@ -17,10 +17,10 @@ class User: Object {
         return "login"
     }
 
-    convenience init(latitude: Double, longitude: Double) {
+    convenience init(login: String, password: String) {
         self.init()
         
-        self.latitude = latitude
-        self.longitude = longitude
+        self.login = login
+        self.password = password
     }
 }
