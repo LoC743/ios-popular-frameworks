@@ -32,6 +32,7 @@ extension AuthPresenter: AuthViewOutput {
         let user = User(login: username, password: password)
         
         if interactor.signIn(user: user) {
+            UserSession.shared.username = username
             router.moveToMainViewController()
         } else {
             router.showUserDoesntExistError()
@@ -46,6 +47,7 @@ extension AuthPresenter: AuthViewOutput {
         let user = User(login: username, password: password)
         
         if interactor.signUp(user: user) {
+            UserSession.shared.username = username
             router.moveToMainViewController()
         } else {
             router.showUserIsAlreadyExists()

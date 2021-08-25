@@ -19,6 +19,7 @@
 		8A11BBFD26D637FB006730A4 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBFC26D637FB006730A4 /* AuthViewController.swift */; };
 		8A11BBFF26D63802006730A4 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBFE26D63802006730A4 /* AuthView.swift */; };
 		8A11BC0226D63B4C006730A4 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BC0126D63B4C006730A4 /* UserStorage.swift */; };
+		8A11BC0526D6416D006730A4 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BC0426D6416D006730A4 /* UserSession.swift */; };
 		8A29F05026D62A9A006134A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A29F04F26D62A9A006134A0 /* User.swift */; };
 		8ADF584D26CD595400AFBB24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF584C26CD595400AFBB24 /* AppDelegate.swift */; };
 		8ADF585626CD595400AFBB24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF585526CD595400AFBB24 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		8A11BBFC26D637FB006730A4 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8A11BBFE26D63802006730A4 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		8A11BC0126D63B4C006730A4 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		8A11BC0426D6416D006730A4 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		8A29F04F26D62A9A006134A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8ADF584926CD595400AFBB24 /* MapsLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADF584C26CD595400AFBB24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 			path = UserStorage;
 			sourceTree = "<group>";
 		};
+		8A11BC0326D6415B006730A4 /* UserSession */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BC0426D6416D006730A4 /* UserSession.swift */,
+			);
+			path = UserSession;
+			sourceTree = "<group>";
+		};
 		8A29F05126D62B20006134A0 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 				8AF63E5426D3A4A400D2BB45 /* Extensions */,
 				8AF63E5526D3A4BD00D2BB45 /* RouteStorage */,
 				8A11BC0026D63B2A006730A4 /* UserStorage */,
+				8A11BC0326D6415B006730A4 /* UserSession */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -470,6 +481,7 @@
 				8A11BBED26D62F20006730A4 /* GoogleMapsBuilder.swift in Sources */,
 				8AF63E5A26D3A62B00D2BB45 /* Location.swift in Sources */,
 				8ADF584D26CD595400AFBB24 /* AppDelegate.swift in Sources */,
+				8A11BC0526D6416D006730A4 /* UserSession.swift in Sources */,
 				8A29F05026D62A9A006134A0 /* User.swift in Sources */,
 				8A11BBFD26D637FB006730A4 /* AuthViewController.swift in Sources */,
 				8A11BBF726D637DE006730A4 /* AuthRouter.swift in Sources */,

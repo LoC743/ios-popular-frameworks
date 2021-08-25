@@ -35,10 +35,11 @@ class GoogleMapsPresenter {
 extension GoogleMapsPresenter: GoogleMapsViewOutput {
     
     func saveRoute(with path: GMSPath) {
+        guard let username = UserSession.shared.username else { return }
         var coordinates = [Location]()
         for index in 0..<path.count() {
             let coordinate = path.coordinate(at: index)
-            let location = Location(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            let location = Location(latitude: coordinate.latitude, longitude: coordinate.longitude, owner: username)
             coordinates.append(location)
         }
         
