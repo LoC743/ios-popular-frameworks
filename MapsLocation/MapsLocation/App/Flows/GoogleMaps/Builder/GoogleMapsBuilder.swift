@@ -8,7 +8,7 @@
 import UIKit
 
 class GoogleMapsBuilder {
-    static func build() -> (UIViewController & GoogleMapsViewInput) {
+    static func build() -> UINavigationController {
         let interactor = GoogleMapsInteractor()
         let router = GoogleMapsRouter()
 
@@ -18,6 +18,8 @@ class GoogleMapsBuilder {
         presenter.viewInput = viewController
         router.viewController = viewController
         
-        return viewController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        return navigationController
     }
 }
