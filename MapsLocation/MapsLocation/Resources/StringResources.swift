@@ -22,4 +22,20 @@ enum StringResources {
     static let showLastRouteAlertMessage = "Do you want to stop tracking?"
     static let yes = "Yes"
     static let no = "No"
+    static let ok = "Ok"
+    
+    static let userDoesNotExitsAlertTitle = "Sorry!"
+    static let userDoesNotExistAlertMessage = "This user does not exist.."
+    
+    static let emptyFieldsAlertTitle = "Oops!"
+    static let emptyFieldsAlertMessage = "One of the field is empty.."
+    
+    static let userAlreadyExistsAlertTitle = "Wow!"
+    static let userAlreadyExistsAlertMessage = "User with this username is already exists.."
+    
+    static let signUpButtonTitle = "Sign Up"
+    static let signInButtonTitle = "Sign In"
+    
+    static let passwordLabelPlaceholder = "Password"
+    static let usernameLabelPlaceholder = "Username"
 }

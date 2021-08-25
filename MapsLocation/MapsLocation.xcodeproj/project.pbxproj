@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		53D6290680B1523DE66FBE9C /* Pods_MapsLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3D6FA37A1269D523F0BC2FC /* Pods_MapsLocation.framework */; };
+		8A11BBED26D62F20006730A4 /* GoogleMapsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBEC26D62F20006730A4 /* GoogleMapsBuilder.swift */; };
+		8A11BBEF26D62F6D006730A4 /* GoogleMapsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBEE26D62F6D006730A4 /* GoogleMapsRouter.swift */; };
+		8A11BBF126D62F9A006730A4 /* GoogleMapsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBF026D62F9A006730A4 /* GoogleMapsInteractor.swift */; };
+		8A11BBF326D62FA8006730A4 /* GoogleMapsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBF226D62FA8006730A4 /* GoogleMapsPresenter.swift */; };
+		8A11BBF526D637D2006730A4 /* AuthBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBF426D637D2006730A4 /* AuthBuilder.swift */; };
+		8A11BBF726D637DE006730A4 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBF626D637DE006730A4 /* AuthRouter.swift */; };
+		8A11BBF926D637E7006730A4 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBF826D637E7006730A4 /* AuthInteractor.swift */; };
+		8A11BBFB26D637EE006730A4 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBFA26D637EE006730A4 /* AuthPresenter.swift */; };
+		8A11BBFD26D637FB006730A4 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBFC26D637FB006730A4 /* AuthViewController.swift */; };
+		8A11BBFF26D63802006730A4 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BBFE26D63802006730A4 /* AuthView.swift */; };
+		8A11BC0226D63B4C006730A4 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BC0126D63B4C006730A4 /* UserStorage.swift */; };
+		8A11BC0526D6416D006730A4 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BC0426D6416D006730A4 /* UserSession.swift */; };
+		8A29F05026D62A9A006134A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A29F04F26D62A9A006134A0 /* User.swift */; };
 		8ADF584D26CD595400AFBB24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF584C26CD595400AFBB24 /* AppDelegate.swift */; };
 		8ADF585626CD595400AFBB24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF585526CD595400AFBB24 /* Assets.xcassets */; };
 		8ADF585926CD595400AFBB24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF585726CD595400AFBB24 /* LaunchScreen.storyboard */; };
@@ -23,6 +36,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A11BBEC26D62F20006730A4 /* GoogleMapsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsBuilder.swift; sourceTree = "<group>"; };
+		8A11BBEE26D62F6D006730A4 /* GoogleMapsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsRouter.swift; sourceTree = "<group>"; };
+		8A11BBF026D62F9A006730A4 /* GoogleMapsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsInteractor.swift; sourceTree = "<group>"; };
+		8A11BBF226D62FA8006730A4 /* GoogleMapsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsPresenter.swift; sourceTree = "<group>"; };
+		8A11BBF426D637D2006730A4 /* AuthBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBuilder.swift; sourceTree = "<group>"; };
+		8A11BBF626D637DE006730A4 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		8A11BBF826D637E7006730A4 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		8A11BBFA26D637EE006730A4 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		8A11BBFC26D637FB006730A4 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		8A11BBFE26D63802006730A4 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		8A11BC0126D63B4C006730A4 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		8A11BC0426D6416D006730A4 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		8A29F04F26D62A9A006134A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8ADF584926CD595400AFBB24 /* MapsLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADF584C26CD595400AFBB24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADF585526CD595400AFBB24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +80,145 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A11BC0026D63B2A006730A4 /* UserStorage */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BC0126D63B4C006730A4 /* UserStorage.swift */,
+			);
+			path = UserStorage;
+			sourceTree = "<group>";
+		};
+		8A11BC0326D6415B006730A4 /* UserSession */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BC0426D6416D006730A4 /* UserSession.swift */,
+			);
+			path = UserSession;
+			sourceTree = "<group>";
+		};
+		8A29F05126D62B20006134A0 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				8ADF586226CD5A3700AFBB24 /* GoogleMaps */,
+				8A29F05226D62B45006134A0 /* Auth */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		8A29F05226D62B45006134A0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				8A29F05526D62CE3006134A0 /* Builder */,
+				8A29F05926D62D06006134A0 /* Router */,
+				8A29F05826D62D00006134A0 /* Interactor */,
+				8A29F05726D62CF1006134A0 /* Presenter */,
+				8A29F05A26D62D9C006134A0 /* Controller */,
+				8A29F05626D62CEA006134A0 /* View */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		8A29F05326D62C88006134A0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8ADF584C26CD595400AFBB24 /* AppDelegate.swift */,
+				8AF63E5826D3A62000D2BB45 /* Entity */,
+				8A29F05126D62B20006134A0 /* Flows */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8A29F05426D62C8F006134A0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8AF63E5426D3A4A400D2BB45 /* Extensions */,
+				8AF63E5526D3A4BD00D2BB45 /* RouteStorage */,
+				8A11BC0026D63B2A006730A4 /* UserStorage */,
+				8A11BC0326D6415B006730A4 /* UserSession */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8A29F05526D62CE3006134A0 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BBF426D637D2006730A4 /* AuthBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		8A29F05626D62CEA006134A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BBFE26D63802006730A4 /* AuthView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A29F05726D62CF1006134A0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BBFA26D637EE006730A4 /* AuthPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A29F05826D62D00006134A0 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BBF826D637E7006730A4 /* AuthInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A29F05926D62D06006134A0 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BBF626D637DE006730A4 /* AuthRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A29F05A26D62D9C006134A0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BBFC26D637FB006730A4 /* AuthViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8A29F05B26D62DC0006134A0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BBF226D62FA8006730A4 /* GoogleMapsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A29F05C26D62DC7006134A0 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BBF026D62F9A006730A4 /* GoogleMapsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A29F05D26D62DCD006134A0 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BBEE26D62F6D006730A4 /* GoogleMapsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A29F05E26D62DD1006134A0 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				8A11BBEC26D62F20006730A4 /* GoogleMapsBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
 		8ADF584026CD595400AFBB24 = {
 			isa = PBXGroup;
 			children = (
@@ -75,12 +240,9 @@
 		8ADF584B26CD595400AFBB24 /* MapsLocation */ = {
 			isa = PBXGroup;
 			children = (
-				8AF63E5826D3A62000D2BB45 /* Models */,
-				8AF63E5526D3A4BD00D2BB45 /* RouteStorage */,
-				8AF63E5426D3A4A400D2BB45 /* Extensions */,
+				8A29F05426D62C8F006134A0 /* Core */,
+				8A29F05326D62C88006134A0 /* App */,
 				8AEDB5CE26CD65B700EA26A1 /* Resources */,
-				8ADF586226CD5A3700AFBB24 /* GoogleMaps */,
-				8ADF584C26CD595400AFBB24 /* AppDelegate.swift */,
 				8ADF585A26CD595400AFBB24 /* Info.plist */,
 			);
 			path = MapsLocation;
@@ -89,8 +251,12 @@
 		8ADF586226CD5A3700AFBB24 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
-				8ADF586426CD5A4E00AFBB24 /* View */,
+				8A29F05E26D62DD1006134A0 /* Builder */,
+				8A29F05D26D62DCD006134A0 /* Router */,
+				8A29F05C26D62DC7006134A0 /* Interactor */,
+				8A29F05B26D62DC0006134A0 /* Presenter */,
 				8ADF586326CD5A4700AFBB24 /* Controller */,
+				8ADF586426CD5A4E00AFBB24 /* View */,
 			);
 			path = GoogleMaps;
 			sourceTree = "<group>";
@@ -140,12 +306,13 @@
 			path = RouteStorage;
 			sourceTree = "<group>";
 		};
-		8AF63E5826D3A62000D2BB45 /* Models */ = {
+		8AF63E5826D3A62000D2BB45 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				8AF63E5926D3A62B00D2BB45 /* Location.swift */,
+				8A29F04F26D62A9A006134A0 /* User.swift */,
 			);
-			path = Models;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		8D6D5AEBD150A3217267A4D8 /* Frameworks */ = {
@@ -297,14 +464,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A11BBF326D62FA8006730A4 /* GoogleMapsPresenter.swift in Sources */,
+				8A11BBF526D637D2006730A4 /* AuthBuilder.swift in Sources */,
+				8A11BBEF26D62F6D006730A4 /* GoogleMapsRouter.swift in Sources */,
 				8ADF586626CD5A6500AFBB24 /* GoogleMapsView.swift in Sources */,
+				8A11BBFB26D637EE006730A4 /* AuthPresenter.swift in Sources */,
+				8A11BBF926D637E7006730A4 /* AuthInteractor.swift in Sources */,
+				8A11BBFF26D63802006730A4 /* AuthView.swift in Sources */,
 				8ADF586126CD59D400AFBB24 /* GoogleMapsViewController.swift in Sources */,
 				8AF63E5726D3A4D700D2BB45 /* RouteStorage.swift in Sources */,
 				8AEDB5D626CD6D0600EA26A1 /* CGFloat+Extension.swift in Sources */,
 				8AF63E5C26D3B40500D2BB45 /* UIViewController+Extensions.swift in Sources */,
+				8A11BC0226D63B4C006730A4 /* UserStorage.swift in Sources */,
+				8A11BBF126D62F9A006730A4 /* GoogleMapsInteractor.swift in Sources */,
 				8AEDB5D226CD666900EA26A1 /* StringResources.swift in Sources */,
+				8A11BBED26D62F20006730A4 /* GoogleMapsBuilder.swift in Sources */,
 				8AF63E5A26D3A62B00D2BB45 /* Location.swift in Sources */,
 				8ADF584D26CD595400AFBB24 /* AppDelegate.swift in Sources */,
+				8A11BC0526D6416D006730A4 /* UserSession.swift in Sources */,
+				8A29F05026D62A9A006134A0 /* User.swift in Sources */,
+				8A11BBFD26D637FB006730A4 /* AuthViewController.swift in Sources */,
+				8A11BBF726D637DE006730A4 /* AuthRouter.swift in Sources */,
 				8AEDB5D426CD6CB300EA26A1 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

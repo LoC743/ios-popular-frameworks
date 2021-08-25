@@ -35,7 +35,19 @@ class GoogleMapsViewController: UIViewController {
     private var routePath: GMSMutablePath?
     private var route: GMSPolyline?
     
+    private let presenter: GoogleMapsViewOutput
+    
     // MARK: - Lifecycle
+    
+    init(presenter: GoogleMapsViewOutput) {
+        self.presenter = presenter
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         super.loadView()
@@ -109,47 +121,17 @@ class GoogleMapsViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = barButton
     }
     
+    private func handleStopTracking(action: UIAlertAction) {
+        handleTracking()
+        loadLastRoute()
+    }
+    
     @objc private func handleShowLastRoute() {
         if isTracking {
-            let yesAction = UIAlertAction(title: StringResources.yes, style: .default) { [weak self] _ in
-                self?.handleTracking()
-                self?.loadLastRoute()
-            }
-            let noAction = UIAlertAction(title: StringResources.no, style: .cancel)
-            showAlert(with: StringResources.showLastRouteAlertTitle,
-                      message: StringResources.showLastRouteAlertMessage,
-                      actions: [noAction, yesAction]
-            )
+            presenter.viewDidShowAlert(with: handleStopTracking(action:))
         } else {
             loadLastRoute()
         }
-    }
-    
-    func loadLastRoute() {
-        let locations = RouteStorage.shared.loadLastRoute()
-        
-        resetRouteLine()
-        for location in locations {
-            addRouteCoordinate(location.coordinate)
-        }
-        
-        if let path = route?.path {
-            let bounds = GMSCoordinateBounds(path: path)
-            googleMapsView.showLastRoute(with: bounds)
-        }
-    }
-    
-    func saveRoute() {
-        guard let path = route?.path else { return }
-    
-        var coordinates = [Location]()
-        for index in 0..<path.count() {
-            let coordinate = path.coordinate(at: index)
-            let location = Location(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            coordinates.append(location)
-        }
-        
-        RouteStorage.shared.saveLastRoute(route: coordinates)
     }
     
     @objc private func handleTracking() {
@@ -174,6 +156,28 @@ class GoogleMapsViewController: UIViewController {
             fatalError()
         }
     }
+    
+    private func saveRoute() {
+        guard let path = route?.path else { return }
+        
+        presenter.saveRoute(with: path)
+    }
+    
+    private func loadLastRoute() {
+        presenter.loadLastRoute()
+    }
+    
+    public func setRoute(with locations: [Location]) {
+        resetRouteLine()
+        for location in locations {
+            addRouteCoordinate(location.coordinate)
+        }
+
+        if let path = route?.path {
+            let bounds = GMSCoordinateBounds(path: path)
+            googleMapsView.showLastRoute(with: bounds)
+        }
+    }
 }
 
 extension GoogleMapsViewController: CLLocationManagerDelegate {
@@ -192,3 +196,5 @@ extension GoogleMapsViewController: CLLocationManagerDelegate {
 }
 
 extension GoogleMapsViewController: GMSMapViewDelegate {}
+
+extension GoogleMapsViewController: GoogleMapsViewInput { }
