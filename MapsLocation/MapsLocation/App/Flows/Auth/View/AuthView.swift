@@ -65,6 +65,7 @@ final class AuthView: UIView {
         }
         
         usernameTextField.placeholder = StringResources.usernameLabelPlaceholder
+        usernameTextField.autocorrectionType = .no
         usernameTextField.borderStyle = .roundedRect
     }
     
@@ -78,6 +79,7 @@ final class AuthView: UIView {
         
         passwordTextField.placeholder = StringResources.passwordLabelPlaceholder
         passwordTextField.borderStyle = .roundedRect
+        passwordTextField.autocorrectionType = .no
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
     }
