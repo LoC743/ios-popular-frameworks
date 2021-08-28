@@ -33,6 +33,24 @@ class AuthViewController: UIViewController {
         super.loadView()
         self.view = AuthView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(hideScreen),
+                                               name: UIApplication.willResignActiveNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(showScreen),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+        authView.disableSecurity()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +59,14 @@ class AuthViewController: UIViewController {
         self.authView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         
         self.addTapGestureRecognizer()
+    }
+    
+    @objc private func hideScreen() {
+        authView.enableSecurity()
+    }
+    
+    @objc private func showScreen() {
+        authView.disableSecurity()
     }
     
     private func addTapGestureRecognizer() {

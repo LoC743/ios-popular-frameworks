@@ -18,6 +18,8 @@ final class AuthView: UIView {
     lazy var signInButton = UIButton(type: .system)
     lazy var signUpButton = UIButton(type: .system)
     
+    lazy var securityView = UIView()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -51,6 +53,7 @@ final class AuthView: UIView {
         self.addUsernameTextField()
         self.addPasswordTextField()
         self.addButtonsStackView()
+        self.addSecurityView()
     }
 
     private func addUsernameTextField() {
@@ -102,5 +105,30 @@ final class AuthView: UIView {
             button.layer.cornerRadius = Constants.buttonsHeight / 2
             button.setTitleColor(.white, for: .normal)
         }
+    }
+    
+    private func addSecurityView() {
+        addSubview(securityView)
+        
+        // Setup blur effect
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        securityView.addSubview(blurEffectView)
+        
+        securityView.isHidden = true
+        
+        securityView.snp.makeConstraints { make in
+            make.bottom.top.left.right.equalTo(self)
+        }
+    }
+    
+    public func enableSecurity() {
+        securityView.isHidden = false
+    }
+    
+    public func disableSecurity() {
+        securityView.isHidden = true
     }
 }
