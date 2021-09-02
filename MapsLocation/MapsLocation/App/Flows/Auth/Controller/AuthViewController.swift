@@ -80,8 +80,6 @@ class AuthViewController: UIViewController {
         authView.endEditing(true)
     }
     
-    
-    
     @objc private func signInButtonTapped() {
         let username: String = authView.usernameTextField.text ?? ""
         let password: String = authView.passwordTextField.text ?? ""

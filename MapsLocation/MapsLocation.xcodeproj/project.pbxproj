@@ -21,6 +21,7 @@
 		8A11BC0226D63B4C006730A4 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BC0126D63B4C006730A4 /* UserStorage.swift */; };
 		8A11BC0526D6416D006730A4 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11BC0426D6416D006730A4 /* UserSession.swift */; };
 		8A29F05026D62A9A006134A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A29F04F26D62A9A006134A0 /* User.swift */; };
+		8A67AA8B26E0E8D5009C92E0 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A67AA8A26E0E8D5009C92E0 /* LocationManager.swift */; };
 		8ADF584D26CD595400AFBB24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF584C26CD595400AFBB24 /* AppDelegate.swift */; };
 		8ADF585626CD595400AFBB24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF585526CD595400AFBB24 /* Assets.xcassets */; };
 		8ADF585926CD595400AFBB24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF585726CD595400AFBB24 /* LaunchScreen.storyboard */; };
@@ -49,6 +50,7 @@
 		8A11BC0126D63B4C006730A4 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		8A11BC0426D6416D006730A4 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		8A29F04F26D62A9A006134A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8A67AA8A26E0E8D5009C92E0 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		8ADF584926CD595400AFBB24 /* MapsLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADF584C26CD595400AFBB24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADF585526CD595400AFBB24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				8AF63E5526D3A4BD00D2BB45 /* RouteStorage */,
 				8A11BC0026D63B2A006730A4 /* UserStorage */,
 				8A11BC0326D6415B006730A4 /* UserSession */,
+				8A67AA8926E0E8C2009C92E0 /* LocationManager */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -217,6 +220,14 @@
 				8A11BBEC26D62F20006730A4 /* GoogleMapsBuilder.swift */,
 			);
 			path = Builder;
+			sourceTree = "<group>";
+		};
+		8A67AA8926E0E8C2009C92E0 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				8A67AA8A26E0E8D5009C92E0 /* LocationManager.swift */,
+			);
+			path = LocationManager;
 			sourceTree = "<group>";
 		};
 		8ADF584026CD595400AFBB24 = {
@@ -471,6 +482,7 @@
 				8A11BBFB26D637EE006730A4 /* AuthPresenter.swift in Sources */,
 				8A11BBF926D637E7006730A4 /* AuthInteractor.swift in Sources */,
 				8A11BBFF26D63802006730A4 /* AuthView.swift in Sources */,
+				8A67AA8B26E0E8D5009C92E0 /* LocationManager.swift in Sources */,
 				8ADF586126CD59D400AFBB24 /* GoogleMapsViewController.swift in Sources */,
 				8AF63E5726D3A4D700D2BB45 /* RouteStorage.swift in Sources */,
 				8AEDB5D626CD6D0600EA26A1 /* CGFloat+Extension.swift in Sources */,

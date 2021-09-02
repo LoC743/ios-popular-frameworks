@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleMaps
+import RxSwift
 
 class GoogleMapsViewController: UIViewController {
     
@@ -16,17 +17,17 @@ class GoogleMapsViewController: UIViewController {
         return self.view as! GoogleMapsView
     }
     
-    private let locationManager = CLLocationManager()
+    private let locationManager = LocationManager()
+    
+    private let disposeBag = DisposeBag()
     
     private var isTracking = false {
         didSet {
             if isTracking {
                 locationManager.startUpdatingLocation()
-                locationManager.startMonitoringSignificantLocationChanges()
                 resetRouteLine()
             } else {
                 locationManager.stopUpdatingLocation()
-                locationManager.stopMonitoringSignificantLocationChanges()
                 saveRoute()
             }
         }
@@ -69,11 +70,6 @@ class GoogleMapsViewController: UIViewController {
         
         googleMapsView.moveToUserPosition(animated: true)
     }
-
-    private func setupLocationManager() {
-        locationManager.delegate = self
-        locationManager.allowsBackgroundLocationUpdates = true
-    }
     
     private func setupRouteLine() {
         route?.strokeColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
@@ -81,6 +77,27 @@ class GoogleMapsViewController: UIViewController {
         route?.map = googleMapsView.mapView
     }
     
+    private func setupLocationManager() {
+        _ = locationManager.authrizationStaus.subscribe(onNext: { [weak self] status in
+            switch status {
+            case .notDetermined:
+                self?.locationManager.requestAuthorizationAccess()
+            case .restricted, .denied:
+                self?.showSettings()
+            case .authorizedAlways, .authorizedWhenInUse:
+                break
+            @unknown default:
+                fatalError()
+            }
+        })
+        .disposed(by: disposeBag)
+        
+        _ = locationManager.userLocation.subscribe(onNext: { [weak self] location in
+            self?.updateUserLocation(location)
+        })
+        .disposed(by: disposeBag)
+    }
+        
     private func resetRouteLine() {
         route?.map = nil
         routePath = GMSMutablePath()
@@ -135,26 +152,14 @@ class GoogleMapsViewController: UIViewController {
     }
     
     @objc private func handleTracking() {
-        checkLocationStatus()
-        
         isTracking.toggle()
         self.navigationItem.rightBarButtonItem?.title = isTracking ?
             StringResources.endTrackTitle : StringResources.startTrackTitle
     }
 
-    private func checkLocationStatus() {
-        let locationStatus = locationManager.authorizationStatus
-        
-        switch locationStatus {
-        case .notDetermined:
-            locationManager.requestAlwaysAuthorization()
-        case .restricted, .denied:
-            showSettings()
-        case .authorizedAlways, .authorizedWhenInUse:
-            break
-        @unknown default:
-            fatalError()
-        }
+    private func updateUserLocation(_ location: CLLocation) {
+        googleMapsView.moveToPosition(with: location.coordinate, animated: true)
+        addRouteCoordinate(location.coordinate)
     }
     
     private func saveRoute() {
@@ -176,21 +181,6 @@ class GoogleMapsViewController: UIViewController {
         if let path = route?.path {
             let bounds = GMSCoordinateBounds(path: path)
             googleMapsView.showLastRoute(with: bounds)
-        }
-    }
-}
-
-extension GoogleMapsViewController: CLLocationManagerDelegate {
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkLocationStatus()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if isTracking,
-           let lastLocation = locations.last {
-            googleMapsView.moveToPosition(with: lastLocation.coordinate, animated: true)
-            addRouteCoordinate(lastLocation.coordinate)
         }
     }
 }
