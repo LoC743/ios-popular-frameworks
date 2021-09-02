@@ -55,6 +55,8 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        authView.observeEmptyFields()
+        
         self.authView.signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
         self.authView.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         
@@ -78,6 +80,8 @@ class AuthViewController: UIViewController {
         authView.endEditing(true)
     }
     
+    
+    
     @objc private func signInButtonTapped() {
         let username: String = authView.usernameTextField.text ?? ""
         let password: String = authView.passwordTextField.text ?? ""
@@ -93,6 +97,11 @@ class AuthViewController: UIViewController {
     @objc private func signUpButtonTapped() {
         let username: String = authView.usernameTextField.text ?? ""
         let password: String = authView.passwordTextField.text ?? ""
+        
+        guard username != "" && password != "" else {
+            presenter.viewHaveEmptyFields()
+            return
+        }
         
         presenter.viewDidSignUp(username: username, password: password)
     }

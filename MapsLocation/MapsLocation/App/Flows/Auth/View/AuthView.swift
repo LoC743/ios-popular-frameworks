@@ -6,6 +6,8 @@
 //
 
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class AuthView: UIView {
     
@@ -44,7 +46,11 @@ final class AuthView: UIView {
         static let buttonsSideOffset = 25
         static let buttonsHeight: CGFloat = 55.0
         static let buttonsSpacing: CGFloat = 15.0
+        static let minimumUsernameLength = 3
+        static let minimumPasswordLength = 7
     }
+    
+    private let disposeBag = DisposeBag()
     
     // MARK: - UI
     
@@ -132,5 +138,34 @@ final class AuthView: UIView {
     
     public func disableSecurity() {
         securityView.isHidden = true
+    }
+    
+    public func observeEmptyFields() {
+        
+        Observable.combineLatest(
+            usernameTextField.rx.text,
+            passwordTextField.rx.text
+        )
+        .map { (username, password) -> Bool in
+            if let username = username,
+               let password = password {
+                return username.count >= Constants.minimumUsernameLength
+                    && password.count >= Constants.minimumPasswordLength
+            }
+            return false
+        }
+        .subscribe(onNext: { [weak self] isValid in
+            
+            [self?.signInButton, self?.signUpButton].forEach { button in
+                button?.isEnabled = isValid
+                
+                if isValid {
+                    button?.alpha = 1.0
+                } else {
+                    button?.alpha = 0.5
+                }
+            }
+        })
+        .disposed(by: disposeBag)
     }
 }
