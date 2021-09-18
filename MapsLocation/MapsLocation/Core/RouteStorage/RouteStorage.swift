@@ -16,8 +16,8 @@ class RouteStorage {
     
     // MARK: - Saving data
     
-    func saveLastRoute(route: [Location]) {
-        clearLastRoute()
+    func saveLastRoute(route: [Location], owner: String) {
+        clearLastRoute(for: owner)
         try? realm.write {
             realm.add(route)
         }
@@ -25,14 +25,14 @@ class RouteStorage {
     
     // MARK: - Loading data
     
-    func loadLastRoute() -> Results<Location> {
-        return realm.objects(Location.self)
+    func loadLastRoute(for owner: String) -> Results<Location> {
+        return realm.objects(Location.self).filter("owner == '\(owner)'")
     }
     
     // MARK: - Remove all data
     
-    func clearLastRoute() {
-        let result = realm.objects(Location.self)
+    func clearLastRoute(for owner: String) {
+        let result = realm.objects(Location.self).filter("owner == '\(owner)'")
         try? realm.write {
             realm.delete(result)
         }
