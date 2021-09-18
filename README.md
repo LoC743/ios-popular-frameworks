@@ -7,7 +7,7 @@
 | Урок 3. Паттерны навигации в iOS-приложениях | :white_check_mark: |
 | Урок 4. Безопасность мобильных приложений    | :white_check_mark: |
 | Урок 5. Библиотека RxSwift                   | :memo:             |
-| Урок 6. Xcode Instruments                    | :x:                |
+| Урок 6. Xcode Instruments                    | :memo:             |
 | Урок 7. Локальные и пуш-уведомления          | :x:                |
 | Урок 8. Фреймворк AVFoundation               | :x:                |
 
