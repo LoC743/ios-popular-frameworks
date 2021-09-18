@@ -12,11 +12,16 @@ import GoogleMaps
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var notificationManager: NotificationManager?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         GMSServices.provideAPIKey(StringResources.apiKey)
+        
+        requestNotificationAuthorization()
+        notificationManager = NotificationManager()
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         let authController = AuthBuilder.build()
@@ -42,4 +47,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                               animations: nil,
                               completion: nil)
         }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        notificationManager?.sendTestNotification()
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        notificationManager?.sendTestNotification()
+    }
+    
+    // MARK: - Private
+    
+    private func requestNotificationAuthorization() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                print("Разрешение получено.")
+            } else {
+                print("Разрешение не получено.")
+            }
+        }
+    }
 }
