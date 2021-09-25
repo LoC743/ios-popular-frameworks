@@ -17,7 +17,8 @@ class User: Object {
         return "login"
     }
 
-    convenience init(login: String, password: String) {
+    convenience init(login: String,
+                     password: String) {
         self.init()
         
         self.login = login
