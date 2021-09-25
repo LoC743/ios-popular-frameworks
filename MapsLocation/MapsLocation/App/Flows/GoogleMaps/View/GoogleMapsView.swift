@@ -12,6 +12,7 @@ final class GoogleMapsView: UIView {
     // MARK: - Subviews
     
     lazy var mapView = GMSMapView()
+    private var marker: GMSMarker?
     
     // MARK: - Init
     
@@ -58,7 +59,7 @@ final class GoogleMapsView: UIView {
         mapView.settings.myLocationButton = true
     }
     
-    public func moveToPosition(with coordinate: CLLocationCoordinate2D, animated: Bool) {
+    func moveToPosition(with coordinate: CLLocationCoordinate2D, animated: Bool) {
         let position = GMSCameraPosition(target: coordinate, zoom: 17)
         
         if animated {
@@ -68,20 +69,28 @@ final class GoogleMapsView: UIView {
         }
     }
     
-    public func moveToUserPosition(animated: Bool) {
+    func moveToUserPosition(animated: Bool) {
         if let coordinate = mapView.myLocation?.coordinate {
             moveToPosition(with: coordinate, animated: animated)
         }
     }
     
-    public func addMarker(at coordinate: CLLocationCoordinate2D) {
-        let marker = GMSMarker(position: coordinate)
-        marker.icon = GMSMarker.markerImage(with: .random()
-        )
-        marker.map = mapView
+    func setMarker(at coordinate: CLLocationCoordinate2D, image: UIImage?) {
+        marker?.map = nil
+        marker = GMSMarker(position: coordinate)
+        
+        if let image = image {
+            marker?.icon = resizeImage(image: image,
+                                          scaledToSize: CGSize(width: 50.0,
+                                                               height: 50.0))
+        } else {
+            marker?.icon = GMSMarker.markerImage(with: .random())
+        }
+        
+        marker?.map = mapView
     }
     
-    public func showLastRoute(with bounds: GMSCoordinateBounds) {
+    func showLastRoute(with bounds: GMSCoordinateBounds) {
         let insets =  UIEdgeInsets(top: Constants.navigationBarHeight + Constants.sideOffset,
                                    left: Constants.sideOffset,
                                    bottom: Constants.sideOffset,
@@ -90,5 +99,14 @@ final class GoogleMapsView: UIView {
         if let camera = mapView.camera(for: bounds, insets: insets) {
             mapView.animate(to: camera)
         }
+    }
+    
+    private func resizeImage(image: UIImage, scaledToSize newSize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 }

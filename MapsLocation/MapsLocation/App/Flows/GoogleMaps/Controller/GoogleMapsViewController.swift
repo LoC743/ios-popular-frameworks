@@ -1,4 +1,4 @@
-//
+ //
 //  GoogleMapsViewController.swift
 //  MapsLocation
 //
@@ -9,7 +9,7 @@ import UIKit
 import GoogleMaps
 import RxSwift
 
-class GoogleMapsViewController: UIViewController {
+ class GoogleMapsViewController: UIViewController {
     
     // MARK: - Private Properties
     
@@ -35,6 +35,15 @@ class GoogleMapsViewController: UIViewController {
     
     private var routePath: GMSMutablePath?
     private var route: GMSPolyline?
+    private var markerImage: UIImage? {
+        didSet {
+            guard let username = UserSession.shared.username,
+                  let image = markerImage else {
+                return
+            }
+            UserStorage.shared.saveCustomMarker(image, for: username)
+        }
+    }
     
     private let presenter: GoogleMapsViewOutput
     
@@ -44,6 +53,7 @@ class GoogleMapsViewController: UIViewController {
         self.presenter = presenter
         
         super.init(nibName: nil, bundle: nil)
+        loadCustomMarker()
     }
     
     required init?(coder: NSCoder) {
@@ -62,13 +72,22 @@ class GoogleMapsViewController: UIViewController {
         
         setupLocationManager()
         addManageTackStatusButton()
-        addShowLastRouteButton()
+        let leftBarButtons = [addShowLastRouteButton(),
+                              addTakePhotoForMarker()]
+        navigationItem.leftBarButtonItems = leftBarButtons
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         googleMapsView.moveToUserPosition(animated: true)
+    }
+    
+    private func loadCustomMarker() {
+        guard let username = UserSession.shared.username,
+              let image = UserStorage.shared.loadCustomMarker(for: username) else { return }
+        self.markerImage = image
     }
     
     private func setupRouteLine() {
@@ -129,18 +148,29 @@ class GoogleMapsViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = barButton
     }
     
-    private func addShowLastRouteButton() {
+    private func addShowLastRouteButton() -> UIBarButtonItem  {
         let barButton = UIBarButtonItem(title: StringResources.lastRouteTitle,
                                       style: .plain,
                                       target: self,
-                                      action: #selector(handleShowLastRoute)
-        )
-        self.navigationItem.leftBarButtonItem = barButton
+                                      action: #selector(handleShowLastRoute))
+        return barButton
+    }
+    
+    private func addTakePhotoForMarker() -> UIBarButtonItem {
+        let barButton = UIBarButtonItem(image: UIImage(systemName: "camera"),
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(handleTakePhoto))
+       return barButton
     }
     
     private func handleStopTracking(action: UIAlertAction) {
         handleTracking()
         loadLastRoute()
+    }
+    
+    @objc private func handleTakePhoto() {
+        presentPickerController()
     }
     
     @objc private func handleShowLastRoute() {
@@ -159,6 +189,7 @@ class GoogleMapsViewController: UIViewController {
 
     private func updateUserLocation(_ location: CLLocation) {
         googleMapsView.moveToPosition(with: location.coordinate, animated: true)
+        googleMapsView.setMarker(at: location.coordinate, image: markerImage)
         addRouteCoordinate(location.coordinate)
     }
     
@@ -185,6 +216,52 @@ class GoogleMapsViewController: UIViewController {
     }
 }
 
-extension GoogleMapsViewController: GMSMapViewDelegate {}
+extension GoogleMapsViewController: GMSMapViewDelegate { }
 
 extension GoogleMapsViewController: GoogleMapsViewInput { }
+
+extension GoogleMapsViewController: UINavigationControllerDelegate { }
+ 
+extension GoogleMapsViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = extractImage(from: info) {
+            markerImage = image
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func extractImage(from info: [UIImagePickerController.InfoKey : Any]) -> UIImage? {
+        if let image = info[.editedImage] as? UIImage {
+            return image
+        }
+        
+        if let image = info[.originalImage] as? UIImage {
+            return image
+        }
+        
+        return nil
+    }
+    
+    func presentPickerController() {
+//        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+            return
+        }
+        
+        let pickerController = UIImagePickerController()
+        pickerController.sourceType = .photoLibrary
+//        pickerController.sourceType = .camera
+        pickerController.allowsEditing = true
+        pickerController.delegate = self
+
+        present(pickerController, animated: true, completion: nil)
+    }
+}
